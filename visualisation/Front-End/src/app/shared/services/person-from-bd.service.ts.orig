@@ -1,0 +1,166 @@
+import {Injectable} from '@angular/core';
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
+import {Person} from '../models/person';
+import {HttpClient} from '@angular/common/http';
+import {URL_SERVER} from '../constants/urls';
+import {Incident} from "../models/incident";
+
+@Injectable()
+export class PersonFromBdService {
+
+  public personList$: BehaviorSubject<Person[]>;
+  private id: string;
+  private mdp: string;
+  private loggedUser: Person;
+  private personFromId: Person;
+
+  private route = '/persons';
+
+  constructor(private http: HttpClient) {
+    this.personList$ = new BehaviorSubject([]);
+  }
+
+  getPersons() {
+    this.http.get<Person[]>(URL_SERVER + this.route).subscribe((persons) => this.personList$.next(persons));
+  }
+
+  getSelectedPerson(id: number){
+    return this.http.get<any>(URL_SERVER + '/selectedPersonForAttribution', {params: {"incidentID": id.toString()}})
+  }
+
+  updateAttribution(selectedIncident: Incident, selectedPerson: Person): void {
+    const routeUpdt = '/updateAuthor';
+    console.log('dans service :::: selectedIncident = '+selectedIncident.idincident + " ----- selectedPerson : "+selectedPerson.idpersonne);
+    this.http.post(URL_SERVER + routeUpdt, {idIncident: selectedIncident.idincident, idPerson: selectedPerson.idpersonne} ).subscribe();
+  }
+
+   checkConnexion(id: number, mdp: string){
+
+   this.id = id.toString();
+   this.mdp = mdp.toString();
+
+   const routeCheck = '/CheckConnexion';
+
+   try {
+     return this.http.get<Person>(URL_SERVER + routeCheck, {params: {"id": this.id, "mdp": this.mdp}})
+
+         //let n = JSON.stringify(person).toString
+
+
+
+         //console.log(n != 2);
+
+   }
+   catch {
+     return null;
+   }
+
+    /*//let idd;
+  deleteAttribution(selectedIncident: Incident): void{
+    this.http.post(URL_SERVER + '/deleteAttribution', {idIncident: selectedIncident.idincident} ).subscribe();
+  }
+ async checkConnexion(id: number, mdp: string){
+    //let idd;
+    this.id = id.toString();
+    this.mdp = mdp.toString();
+
+
+    const routeCheck = '/CheckConnexion';
+   try {
+     await this.http.get<Person>(URL_SERVER+routeCheck,{params: {"id" : this.id, "mdp" : this.mdp}}).subscribe(
+      (person) => {
+        //idd = person[0].idpersonne;
+        let n = JSON.stringify(person).toString().length;
+        //console.log(n != 2);
+        console.log("ididid = "+JSON.stringify(person).toString().length);
+
+        if ( n != 2 ) {
+          console.log(">>>>> CONNEXION ETABLIE");
+          const routeConnectedPerson = '/connectedPerson';
+          this.http.get<Person>(URL_SERVER+routeConnectedPerson,{params:{"id": this.id}}).subscribe(
+            (person) => {
+                    this.loggedUser = person[0];
+                    console.log(">>>>> LA PERSONNE CONNECTEE EST : " + this.loggedUser.prenom);
+
+                    return new Promise(resolve => {
+                       setTimeout(() => {resolve(true);}, 2000);});
+                  })
+        }
+        else {
+          console.log("<<<<< CONNEXION ECHOUEE");
+
+          return new Promise(resolve => {
+            setTimeout(() => {resolve(false);}, 2000);});
+
+        }
+        //return (n != 2);
+
+      }
+    )}
+    catch {
+     return null;
+    }*/
+  }
+
+  async getConnectedPerson(id: number) {
+    this.id = id.toString();
+    const routeConnectedPerson = '/connectedPerson';
+    try {
+      this.http.get<Person>(URL_SERVER+routeConnectedPerson,{params:{"id": this.id}}).subscribe(
+        (person) => {
+          this.loggedUser = person[0];
+        }
+      )
+    }
+    catch {
+      return null;
+    }
+  }
+  getPerson(id: number) : Person {
+    this.id = id.toString();
+    const routeConnectedPerson = '/Person';
+    try {
+      this.http.get<Person>(URL_SERVER+routeConnectedPerson,{params:{"id": this.id}}).subscribe(
+        (person) => {
+          this.personFromId = person[0];
+          return (this.personFromId);
+        }
+      )
+    }
+    catch {
+      return null;
+    }
+  }
+
+  getLoggedPerson() : Person {return this.loggedUser;}
+
+ /* async checkConnexion(id: number, mdp: string): Promise<boolean> {
+    this.id = id.toString();
+    this.mdp = mdp;
+
+    const routeCheck = '/checkConnexion';
+
+    console.log("checkConexion dans persobd : id = " + this.id + " mdp = " + this.mdp);
+
+    const req = this.http.get<Person>(URL_SERVER + routeCheck, {params:{"id" : this.id, "mdp" : this.mdp}});
+
+    await req.subscribe((person) => {
+      this.loggedUsed = person[0];
+      return this.loggedUsed != null;
+    })
+    return true;
+    }
+*/
+/*    try {
+      req.subscribe((person) => {
+        this.loggedUsed = person[0];
+        console.log("Authentification réussie avec  : " + this.loggedUsed.prenom);
+        return this.loggedUsed;
+      })
+    }
+    catch {
+      console.log("Authentification échoué");
+      return null;
+    }*/
+
+}

@@ -1,0 +1,52 @@
+<label>
+  <select class="comboBox">
+    <option *ngFor="let categorie of categories" (click)="onSelect(categorie.type)">
+      {{categorie.type}}
+    </option>
+  </select>
+  <select class="comboBox">
+    <option *ngFor="let person of persons" (click)="personOnSelect(person.idpersonne)">
+      {{person.prenom}} {{person.nom}}
+    </option>
+  </select>
+  <button title="Ajouter cette personne à cette catégorie" class="plus" (click)="addPersonToCategory()">+</button>
+  <button title="Supprimer cette personne de cette catégorie" class="minus" (click)="deletePersonFromCategory()">-</button>
+</label>
+
+
+<!--
+<h4> Personnes chargées de cette catégories : </h4>
+<div class="lists">
+  <ul *ngFor="let person of personsInChargeOf" id="list" >
+    <li><span class="in" >{{person.prenom}} {{person.nom}}</span></li>
+  </ul>
+</div>-->
+
+<table class="table table-bordered table-striped" *ngIf="personsInChargeOf.length > 0">
+
+  <thead>
+    <th>Prenom</th>
+    <th>Nom</th>
+  </thead>
+  <tbody>
+  <tr *ngFor="let person of  personsInChargeOf" id="list">
+    <td>{{person.prenom}}</td>
+    <td>{{person.nom}}</td>
+  </tr>
+
+  </tbody>
+
+
+</table>
+
+
+<div>
+  <textarea placeholder="Ajoutez un type d'incidents" name="categories" id="categories" cols="20" rows="4"  (keyup)="onKey($event)">
+</textarea>
+</div>
+<div>
+  <button data-hover="Ajouter ce type" class="button" (click)="getNewCategory()"><div>Ajouter</div></button>
+</div>
+<div id="snackbarAdd">Personne affectée au catégorie!</div>
+<div id="snackbarDel">Personne dispensée de la catégorie!</div>
+<div id="snackbarCategory">La catégorie a été rajoutée</div>

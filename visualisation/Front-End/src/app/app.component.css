@@ -1,0 +1,137 @@
+html,body,div,h1,ol,ul,li,menu,nav{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}
+menu,nav,section{display:block;}
+body{line-height:1;color:#fff;margin:auto;font:1em/1.3em Helvetica,sans-serif;}
+ol,ul{list-style:none;}
+blockquote,q{quotes:none;}
+
+.container{z-index:1;position:relative;width:1000px;margin:auto;text-align:center;height:100%;}
+.container.blue{background-color:#0099cc;}
+.container.green{background-color:#9ed846;}
+.container.red{background-color:#ff6766;}
+.incident-wrap{background-color:#def1f7;margin:auto;max-width:1000px;min-height:400px;position:relative;}
+h1{margin:40px;font-size:40px;line-height:5px;font-weight:bold;text-shadow:0px 1px 1px #888;}
+a{text-decoration:none;color:#fff;margin:0 10px;}
+
+.menu{width:100%;position:20%;height:100px;background-color:#fff;top:0;left:0;z-index:2;}
+.menu .slider{position:relative;width:100%;text-align:center;margin-bottom:51%;}
+.menu ul{height:100%;display:inline-block;margin:20px 0 15px 0;}
+.menu ul li{margin:0 40px;font-size:18px;float:left;}
+.menu ul li a{color:#444;margin:0;}
+
+.avatar {
+  vertical-align:baseline;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  position: relative;
+}
+
+.login-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+input{
+  display: block;
+  width: 320px;
+  height: 50px;
+  background: rgba(185, 204, 205, 0.3);
+  outline: none;
+  border: 1px solid rgba(0,0,0,0.5);
+  font-family: Source Sans Pro;
+  font-weight: lighter;
+  font-size: 14px;
+  margin-bottom: 10px;
+  padding-Left: 10px;
+  border-radius: 5px;
+}
+
+button{
+  display: block;
+  width: 335px;
+  height: 50px;
+  font-size: 16px;
+  font-weight: lighter;
+  background: rgb(79, 161, 255);
+  color: #fff;
+  border: 0px;
+  border-radius: 5px;
+  font-weight: lighter;
+  font-size: 14px;
+  margin-bottom: 10px;
+  padding-Left: 10px;
+  border-radius: 5px;
+
+}
+
+.msg{
+  fnt-size: 16px;
+  font-weight: lighter;
+  color: #ff6766;
+}
+
+
+#snackbar2 {
+  visibility: hidden; /* Hidden by default. Visible on click */
+  min-width: 250px; /* Set a default minimum width */
+  margin-left: -125px; /* Divide value of min-width by 2 */
+  background-color: #333; /* Black background color */
+  color: #fff; /* White text color */
+  text-align: center; /* Centered text */
+  border-radius: 2px; /* Rounded borders */
+  padding: 16px; /* Padding */
+  position: fixed; /* Sit on top of the screen */
+  z-index: 1; /* Add a z-index if needed */
+  left: 50%; /* Center the snackbar */
+  bottom: 30px; /* 30px from the bottom */
+}
+
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+#snackbar2.show {
+  visibility: visible; /* Show the snackbar */
+
+  /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+  However, delay the fade out process for 2.5 seconds */
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+
+
+#nameFont{
+  font-size:10px;
+  line-height:40px;
+  text-align: center;
+  font-weight:bold;
+  color:#456;
+  font-family:"Century Gothic", Times, serif;
+  margin-top: -20px;
+}
+/*-------------------------CSS: titre & Animation------------------------*/
+html, body {height: 100%;font-family: 'Varela Round' sans-serif; text-align: center;}
+h1 {margin-top: 5%;font-size: 3rem;display: inline-block;}
+h1 div {position: relative;float: left;color: #456;}
+h1 div:first-child {color: #3498db;margin-right: 1rem;}
+.delay-1 {-moz-animation-delay: 1s;-webkit-animation-delay: 1s;animation-delay: 1s;}
+/*************************************************************************/

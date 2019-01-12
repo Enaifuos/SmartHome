@@ -1,0 +1,27 @@
+<br style="margin-top: 14%">
+<img title="Fire" align="middle" src="/assets/intrusion.png" height="50" width="50" />
+<p style="color: black;font-size: large"> Le détecteur de mouvement de la salle {{incident.localisation}} a detecté quelque chose. </p>
+<p style="color: black;font-size: large"> Il semblerait que quelqu'un ou quelque chose se soit introduit chez vous. </p>
+<p style="color: black; margin-top: 35px;margin-bottom: 25px; font-size: large"> Actions disponibles : </p>
+<style scoped>
+  .button-success,
+  .button-error,
+  .button-secondary{
+    color: white;
+    border-radius: 4px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  }
+
+  .button-success {
+    background: rgb(28, 184, 65); /* this is a green */
+  }
+  .button-error {
+    background: rgb(202, 60, 60); /* this is a maroon */
+  }
+
+  .button-secondary {
+    background: rgb(66, 184, 221); /* this is a light blue */
+  }
+</style>
+<button class="button-error pure-button" (click)="enableAlarm()"> Activer l'alarme </button>
+<button class="button-success pure-button"> Rien à signaler </button>

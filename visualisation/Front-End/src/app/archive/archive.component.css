@@ -1,0 +1,74 @@
+.container{z-index:1;position:relative;width:1000px;margin:auto;text-align:center;height:100%;}
+.container.white{background-color: #ffffff;}
+h1{font:inherit;vertical-align:baseline;color:#0099cc;}
+
+h3{font-size:20px;line-height:40px;text-align: center;font-weight:bold;color:#456;font-family:"Century Gothic", Times, serif;}
+/*h3 {text-align:center; font-weight:lighter;font-family:"Century Gothic", Times, serif;font-size:15px;color:#191970;margin-bottom:1%;}
+/**Barre de recherche**/
+input {
+  width: 70%	;
+  height:40px; position:relative;
+  border: 1px solid gray;
+  border-radius: 4px;
+  background-color: white;
+  padding-left: 10px;
+  margin-bottom:20px;
+}
+input:hover {background-color: #f5f5f5;}
+
+th, td {
+  border-bottom: 1px solid #ddd;font-size:16px;font-family:"Century Gothic",Times, serif;color:black;height:30px;text-align:center;
+  vertical-align: middle;
+}
+
+th{font-weight:bold; text-align:center;background-color:#70dbdb;position:relative;font-size:18px;
+  vertical-align: center;height:20px;}
+table {
+
+  width:100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5px;
+}
+
+tr:hover {background-color: #f5f5f5;}
+.selected {
+  color: black !important;
+}
+.pointer{
+  cursor: pointer;
+}
+/******************css des deux sections(Famille/Intervenants)********************/
+section {display: none;padding: 20px 0 0;border-top: 1px solid #ddd;}
+.familysection, .speakersection {display: none;margin-bottom:20px;}
+
+label {
+  display: inline-block;
+  margin: 0 0 -1px;
+  padding: 15px 25px;
+  font-weight: 600;
+  text-align: center;
+  color: #bbb;
+  border: 1px solid transparent;
+}
+label:before {
+  font-family: fontawesome;
+  font-weight: normal;
+  margin-right: 10px;
+}
+label:hover {
+  color: #888;
+  cursor: pointer;
+}
+input:checked + label {
+  color: #555;
+  border: 1px solid #ddd;
+  border-top: 2px solid orange;
+  border-bottom: 1px solid #fff;
+}
+#tab1:checked ~ #content1,
+#tab2:checked ~ #content2{
+  display: block;
+}
+/**************************************************/
+

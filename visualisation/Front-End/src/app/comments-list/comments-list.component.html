@@ -1,0 +1,6 @@
+<h4> Vos commentaires : </h4>
+<div class="lists">
+	<ul *ngFor="let comment of commentList" id="list" >
+    <li><span class="in" >{{comment.prenom}} {{comment.nom}}</span> : {{comment.commentaire}}</li>
+	</ul>
+</div>

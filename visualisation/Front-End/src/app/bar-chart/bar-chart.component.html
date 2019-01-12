@@ -1,0 +1,22 @@
+<script src="node_modules/chart.js/src/chart.js"></script>
+<h1>{{title}}</h1>
+
+
+<div *ngIf="dataAvailable">
+  <div style="display: block">
+    <canvas baseChart
+            [datasets]="barChartData"
+            [labels]="barChartLabels"
+            [options]="barChartOptions"
+            [legend]="barChartLegend"
+            [chartType]="barChartType"
+            [colors]="chartColors"
+            (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)"></canvas>
+  </div>
+  <button (click)="loadGraph('today')" >Aujourd'hui</button>
+  <button (click)="loadGraph('week')">Cette semaine</button>
+  <button (click)="loadGraph('month')"> Ce mois-ci </button>
+  <button (click)="loadGraph('year')"> Cette année </button>
+</div>
+

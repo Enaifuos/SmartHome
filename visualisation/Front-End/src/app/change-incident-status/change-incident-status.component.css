@@ -1,0 +1,133 @@
+
+div {
+  display: flex;
+  flex-flow: row wrap;
+   flex: 1;
+  padding: 0.5rem;
+}
+
+
+input[type="radio"] {
+  display: none;
+&:not(:disabled) ~ label {
+   cursor: pointer;
+ }
+&:disabled ~ label {
+   color: hsla(150, 5%, 75%, 1);
+   border-color: hsla(150, 5%, 75%, 1);
+   box-shadow: none;
+   cursor: not-allowed;
+ }
+}
+label {
+  height: 60%;
+  display: block;
+  background: dimgrey;
+  border: 2px solid hsla(150, 75%, 50%, 1);
+  border-radius: 20px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+//margin: 1rem;
+  text-align: center;
+  box-shadow: 0px 3px 10px -2px hsla(150, 5%, 65%, 0.5);
+  position: relative;
+}
+input[type="radio"]:checked + label {
+  background: hsla(150, 75%, 50%, 1);
+  color: hsla(215, 0%, 100%, 1);
+  box-shadow: 0px 0px 20px hsla(150, 100%, 50%, 0.75);
+&::after {
+   color: hsla(215, 5%, 25%, 1);
+   font-family: FontAwesome, sans-serif;
+   border: 2px solid hsla(150, 75%, 45%, 1);
+   content: "\f00c";
+   font-size: 8px;
+   position: absolute;
+   top: -25px;
+   left: 50%;
+   transform: translateX(-50%);
+   height: 50px;
+   width: 100px;
+   line-height: 50px;
+   text-align: center;
+   border-radius: 50%;
+   background: white;
+   box-shadow: 0px 2px 5px -2px hsla(0, 0%, 0%, 0.25);
+ }
+}
+input[type="radio"]#control_05:checked + label {
+  background: red;
+  border-color: red;
+}
+input[type="radio"]#control_02:checked + label {
+  background: orange;
+  border-color: orange;
+}
+input[type="radio"]#control_03:checked + label {
+  background: mistyrose;
+  border-color: rosybrown;
+}
+input[type="radio"]#control_04:checked + label {
+  background: yellow;
+  border-color: yellow;
+}
+p {
+  font-weight: 900;
+}
+/****************** Bouton valider les modifications *********************/
+    button:hover{cursor: pointer}
+    button {border-radius: 5%;background: #4CAF50; outline: none;position: relative;right: 15%; border: 2px solid hsla(150, 75%, 50%, 1);padding: 15px 50px;overflow: hidden;}
+    button:hover:before{opacity: 1; transform: translate(0,0);}
+    button:before{color:hsla(150, 75%, 50%, 1);content: attr(data-hover);position: absolute;top: 1.1em; left: 0;width: 100%;text-transform: uppercase;letter-spacing: 3px;font-weight: 800;font-size: .8em;opacity: 0;transform: translate(-100%,0);transition: all .3s ease-in-out;}
+    button:hover div{opacity: 0; transform: translate(100%,0)}
+    button div{text-transform: uppercase;letter-spacing: 3px;font-weight: 800;font-size: .8em;transition: all .3s ease-in-out;}
+/************************************************************************/
+
+.retour:hover{cursor: pointer}
+.retour {border-radius: 5%;background: #4CAF50; outline: none;position: relative;left: 17%; border: 2px solid hsla(150, 75%, 50%, 1);padding: 15px 50px;overflow: hidden;margin-top:-10%;}
+
+#snackbar {
+  visibility: hidden; /* Hidden by default. Visible on click */
+  min-width: 250px; /* Set a default minimum width */
+  margin-left: -125px; /* Divide value of min-width by 2 */
+  background-color: #333; /* Black background color */
+  color: #fff; /* White text color */
+  text-align: center; /* Centered text */
+  border-radius: 2px; /* Rounded borders */
+  padding: 16px; /* Padding */
+  position: fixed; /* Sit on top of the screen */
+  z-index: 1; /* Add a z-index if needed */
+  left: 50%; /* Center the snackbar */
+  bottom: 30px; /* 30px from the bottom */
+}
+
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+#snackbar.show {
+  visibility: visible; /* Show the snackbar */
+
+  /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+  However, delay the fade out process for 2.5 seconds */
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}

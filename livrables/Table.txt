@@ -1,0 +1,52 @@
+DROP TABLE IF EXISTS COMMENTAIRE;
+DROP TABLE IF EXISTS ALLOCATION;
+DROP TABLE IF EXISTS INCIDENT;
+DROP TABLE IF EXISTS PERSONNE;
+DROP TABLE IF EXISTS LOCALISATION;
+
+
+CREATE TABLE PERSONNE (
+	idPersonne varchar(10) primary key,
+	nom varchar(30) not null,
+	prenom varchar(30) default null,
+	statut varchar(10) not null,
+	constraint personne_check check ( statut in  ('responsable','habitant','travaillant','objet'))
+);
+
+CREATE TABLE LOCALISATION(
+	localisation VARCHAR(30) PRIMARY KEY
+);
+
+CREATE TABLE INCIDENT(
+	idIncident VARCHAR(10) PRIMARY KEY,
+	titre VARCHAR(30) NOT NULL,
+	description VARCHAR(200) NOT NULL,
+	type VARCHAR(10),
+	urgence int default 0,
+	date DATE, 
+	heure TIME,
+	duree INT,
+	etat VARCHAR(20) NOT NULL CHECK(etat in('Valide','Accepte','Refuse')),
+	localisation VARCHAR(30),
+	idAuteur VARCHAR(10),
+	constraint incident_FK1 foreign key (localisation) references localisation(localisation),
+	constraint incident_FK2 foreign key (idAuteur) references personne (idPersonne),
+	constraint incident_urgence_check check ( urgence >= 0 AND urgence <= 10 )
+);
+
+CREATE TABLE COMMENTAIRE (
+	idCommentaire int,
+	idPersonne varchar(10) primary key,
+	idIncident varchar(10),
+	commentaire varchar(100),
+	constraint commentaire_FK1 foreign key (idPersonne) references Personne(idPersonne),
+	constraint commentaire_FK2 foreign key (idIncident) references Incident(idIncident)
+);
+
+CREATE TABLE ALLOCATION (
+	idIncident VARCHAR(10),
+	idPersonne VARCHAR(10),
+	constraint allocation_PK primary key (idIncident,idPersonne),
+	constraint allocation_FK1 foreign key (idIncident) references Incident(idIncident),
+	constraint allocation_FK2 foreign key (idPersonne) references Personne(idPersonne)
+);

@@ -1,0 +1,68 @@
+<div *ngIf="incident">
+  <h3>Détails de l'incident sélectionné </h3>
+
+  <div>
+    <main>
+      <input id="tab1" type="radio" name="tabs" checked>
+      <label for="tab1">Description</label>
+
+      <input id="tab2" type="radio" name="tabs">
+      <label for="tab2">Commentaires ({{nbComment}})</label>
+      <section id="content1" class="content1">
+        <h4 class="titre"> {{ incident.titre | uppercase }}</h4>
+        <div class="detail-wrap">
+          <div class="fields" *ngIf="incident.type != 'feu' && incident.type != 'Intrusion'">
+            <p class="type"><strong><img title="Type" align="middle" src="/assets/type.png" height="20" width="20" /> Type : <br/> </strong></p>
+            <p class="urgence"><strong><img title="Urgence" align="middle" src="/assets/urgence.png" height="20" width="20" /> Urgence : <br/> </strong></p>
+            <p class="idauteur"><strong><img title="Nom d'auteur" align="middle" src="/assets/author.png" height="20" width="20" /> Nom Auteur : <br/> </strong></p>
+            <p class="localisation"> <strong><img title="Localisation" align="middle" src="/assets/localisation.png" height="20" width="20" /> Localisation : <br/> </strong> </p>
+            <p class="description"><strong><img title="Description" align="middle" src="/assets/description.png" height="20" width="20" /> Description :<br/> </strong></p>
+            <p class="attribuer"><strong><img title="Attribué à" align="middle" src="/assets/attribute.png" height="20" width="20" /> Attribuer à :<br/> </strong></p>
+          </div>
+          <div class="fields2" *ngIf="incident.type != 'feu' && incident.type != 'Intrusion'">
+            <p class="type"> {{incident.type}} <br/></p>
+            <p class="urgence">
+              <span *ngIf="incident.urgence > 7">Très urgent</span>
+              <span *ngIf="incident.urgence < 4">Pas urgent</span>
+              <span *ngIf="incident.urgence > 3 && incident.urgence < 8">Urgent</span>
+            </p>
+            <p class="idauteur"> {{incident.nomAuteur}} {{incident.prenomAuteur}} <br/></p>
+            <p class="localisation">
+              <span *ngIf="incident.localisation===null">Non déclarée</span>
+              <span *ngIf="incident.localisation!=null">{{incident.localisation}}</span><br/></p>
+            <p class="description"> {{incident.description}} <br/></p>
+            <p class="attribuer" [align]="center">
+              <app-persons-combo-box></app-persons-combo-box>
+              <br/></p>
+          </div>
+          <div *ngIf="incident.type == 'feu'">
+            <app-fire-incident></app-fire-incident>
+          </div>
+          <div *ngIf="incident.type == 'Intrusion'">
+            <app-intrusion-incident></app-intrusion-incident>
+          </div>
+          <div class="change" *ngIf="incident.type != 'feu' && incident.type != 'Intrusion'">
+            <app-change-incident-status></app-change-incident-status>
+          </div>
+        </div>
+        <div class="date"><span>Date: </span>{{incident.date | date:"medium"}}</div>
+
+      </section>
+      <section id="content2" class="content2">
+        <div class="comments">
+          <app-comments-list></app-comments-list>
+        </div>
+        <app-comment-field></app-comment-field>
+      </section>
+    </main>
+
+
+    <!--<label>name:
+      <input [(ngModel)]="incident.titre" placeholder="titre"/>
+    </label>-->
+  </div>
+
+
+</div>
+
+

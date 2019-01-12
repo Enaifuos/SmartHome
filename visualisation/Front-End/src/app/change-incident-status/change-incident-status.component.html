@@ -1,0 +1,46 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Roboto:400,700'>
+<link rel='stylesheet prefetch' href='http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css'>
+
+
+<div class="Wrap-buttons">
+
+  <div (click)="change('traite')">
+    <input  type="radio" id="control_01" name="select" value="1" [checked]="status === 'traite'" >
+    <label for="control_01">
+      <h2>Traité</h2>
+      <p>L'incident à été traité</p>
+    </label>
+
+  </div>
+
+  <div (click)="change('accepte')">
+    <input type="radio" id="control_02" name="select" value="2" [checked]="status === 'accepte'">
+    <label for="control_02">
+      <h2>Accepté</h2>
+      <p>Vous acceptez de traiter cet incident</p>
+    </label>
+
+  </div>
+
+  <div (click)="change('archive')">
+    <input type="radio" id="control_04" name="select" value="4" [checked]="status === 'archive'">
+    <label for="control_04">
+      <h2>Archivé</h2>
+      <p>Mettre l'incident dans l'archive si traité</p>
+    </label>
+  </div>
+
+  <div (click)="change('refuse')">
+    <input type="radio" id="control_05" name="select" value="5" [checked]="status === 'refuse'">
+    <label for="control_05">
+      <h2>Refusé</h2>
+      <p>Vous refusez de traiter cet incident</p>
+    </label>
+  </div>
+</div>
+<script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
+<button data-hover="revenir à la liste des incidents" class="valider" (click)="backClicked()"><div>Retour</div></button>
+<button data-hover="valider les modifications" class="retour" (click)="update()"><div>Valider</div></button>
+<div id="snackbar">Vos modifications ont été prise en compte</div>
+

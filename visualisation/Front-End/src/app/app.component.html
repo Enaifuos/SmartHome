@@ -1,0 +1,59 @@
+<html lang="en" >
+<head>
+<meta charset="UTF-8">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+	<link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Varela+Round'>
+	<link rel='stylesheet prefetch' href='https://daneden.github.io/animate.css/animate.min.css'>
+	<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css'>
+</head>
+<body>
+  <div>
+    <h1>
+      <div class="animated fadeInLeft">Home</div><div class="animated fadeInRight">Incident</div>
+    </h1>
+    <div class="log-div">
+    <div *ngIf="isConnected != true" class="login-box">
+      <form (ngSubmit)="formSubmit()" >
+        <div class="text-box">
+         <!-- <label for="uname">Username</label>-->
+          <input type="text" name="thename" id="uname" placeholder="Username" class="form-control" [(ngModel)]="id">
+        </div>
+        <div class="text-box">
+         <!--<label for="pwd">Password</label>-->
+         <input type="password" name="thepwd" id="pwd" placeholder="Password" class="form-control" [(ngModel)]="mdp">
+        </div>
+        <div class="button"><button type="submit" class="btn-default btn">Login</button></div>
+
+        <div *ngIf="authenticationFailed == true">
+          <div class="animated fadeInLeft"> <font color="#ff6766">Authentification </font></div><div class="animated fadeInRight"><font color="#ff6766">Echouée</font></div>
+        </div>
+      </form>
+    </div>
+    </div>
+    <div *ngIf="isConnected == true">
+      <h4 id="nameFont" *ngIf="available">Connecté en tant que : {{logUser.prenom}} {{logUser.nom}}</h4>
+      <div class="menu">
+        <div class="slider">
+          <ul>
+            <li class="category"><a routerLink="/incidents-sections" (click)="gifshow()">VISUALISER</a></li>
+            <li class="category"><a routerLink="/archive">ARCHIVE</a></li>
+            <li class="category"><a routerLink="/stats">STATISTIQUES</a></li>
+            <li class="category"><a routerLink="/settings">PARAMETRES</a></li>
+            <li class="category"><a routerLink="/homeio">HOME I/O</a></li>
+          <li class="category active" *ngIf="isConnected == true" (click)="disconnect()"><a href="#home">DECONNEXION</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="incident-wrap">
+        <div class="container blue">
+          <h1>Visualisation</h1>
+        </div>
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+  <div id="snackbar2">Bienvenue chez vous !</div>
+</body>
+</html>
+

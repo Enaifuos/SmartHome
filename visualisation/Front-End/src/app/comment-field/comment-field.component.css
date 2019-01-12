@@ -1,0 +1,21 @@
+textarea{margin-top:5px;}
+div{margin-top:5%;}
+button:hover{cursor: pointer}
+button {border-radius: 5%;background: #4CAF50; outline: none;position: relative;border: 2px solid hsla(150, 75%, 50%, 1);padding: 15px 50px;overflow: hidden;margin-top:-10%;}
+button:hover:before{opacity: 1; transform: translate(0,0);}
+button:before{color:hsla(150, 75%, 50%, 1);content: attr(data-hover);position: absolute;top: 1.1em; left: 0;width: 100%;text-transform: uppercase;letter-spacing: 3px;font-weight: 800;font-size: .8em;opacity: 0;transform: translate(-100%,0);transition: all .3s ease-in-out;}
+button:hover div{opacity: 0; transform: translate(100%,0)}
+button div{text-transform: uppercase;letter-spacing: 3px;font-weight: 800;font-size: .8em;transition: all .3s ease-in-out;}
+
+
+.warning{
+  color:red;
+}
+
+.counter{
+  color:black;
+}
+
+.warningArea{
+  border:2px solid red;
+}

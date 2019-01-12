@@ -1,0 +1,75 @@
+<div class="container white"><h1> Archives </h1></div>
+<br>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<div>
+  <div>
+    <form id="filter">
+      <input type="text" [(ngModel)]="search" name="search" class="form-control" placeholder="Chercher des incidents par titre, urgence ou état:" />
+    </form>
+  </div>
+  <table class="table table-bordered table-striped" *ngIf="incidents.length > 0">
+    <thead>
+    <th class="pointer" (click)="sort('urgence')"> <i class="fa"
+                                                      [ngClass]="{'fa-sort': column != 'urgence','fa-sort-asc': column == 'urgence' && !isDesc,'fa-sort-desc': column == 'urgence' && isDesc }" aria-hidden="true">
+    </i>Urgence</th>
+    <th class="pointer" (click)="sort('titre')"> <i class="fa"
+                                                    [ngClass]="{'fa-sort': column != 'titre','fa-sort-asc': (column == 'titre' && !isDesc),'fa-sort-desc': (column == 'titre' && isDesc) }" aria-hidden="true">
+    </i>Titre</th>
+    <th class="pointer" (click)="sort('etat')"> <i class="fa"
+                                                   [ngClass]="{'fa-sort': column != 'etat','fa-sort-asc': (column == 'etat' && !isDesc),'fa-sort-desc': (column == 'etat' && isDesc) }" aria-hidden="true">
+    </i>Etat</th>
+    <th class="pointer" (click)="sort('date')"> <i class="fa"
+                                                   [ngClass]="{'fa-sort': column != 'date','fa-sort-asc': (column == 'date' && !isDesc),'fa-sort-desc': (column == 'date' && isDesc) }" aria-hidden="true">
+    </i>Date</th>
+    <th class="pointer" (click)="sort('prenom')"> <i class="fa"
+                                                     [ngClass]="{'fa-sort': column != 'date','fa-sort-asc': (column == 'prenom' && !isDesc),'fa-sort-desc': (column == 'prenom' && isDesc) }" aria-hidden="true">
+    </i>Attribué à</th>
+    </thead>
+    <tbody>
+    <tr *ngFor="let incident of incidents | filter:search | orderBy: {property: column, direction: direction}"
+        (click)="onSelect(incident)"
+        [class.selected]="incident === selectedIncident"
+        routerLink="/incident-details">
+      <td>
+        <span *ngIf="incident.urgence > 7"><img title="Très urgent" src="/assets/tres_urgent.png" height="33" width="33" /></span>
+        <span *ngIf="incident.urgence < 4"><img title="Pas urgent" src="/assets/pas_urgent.png" height="33" width="33" /></span>
+        <span *ngIf="incident.urgence > 3 && incident.urgence < 8"><img title="Urgent" src="/assets/urgent.png" height="33" width="33" /></span>
+      </td>
+      <td>{{incident.titre}}</td>
+      <td><img title="Archivé" src="/assets/archive.png" height="33" width="33"/></td>
+      <td>{{incident.date | date:"short"}}</td>
+      <td>{{incident.prenom}} {{incident.nom}}</td>
+    </tr>
+    </tbody>
+  </table>
+  <table align="right" style="width: 80%; background-color: #def1f7;">
+    <tbody>
+    <tr>
+      <td>
+        <img src="/assets/validate.png" height="15" width="15"/> Traité
+      </td>
+      <td>
+        <img src="/assets/icon.png" height="15" width="15"/> Refusé
+      </td>
+      <td>
+        <img src="/assets/accepté.png" height="15" width="15"/> Accepté
+      </td>
+      <td>
+        <img src="/assets/archive.png" height="15" width="15"/> Archivé
+      </td>
+      <td>
+        <img src="/assets/pas_urgent.png" height="15" width="15"/> Pas urgent
+      </td>
+      <td>
+        <img src="/assets/urgent.png" height="15" width="15"/> Urgent
+      </td>
+      <td>
+        <img src="/assets/tres_urgent.png" height="15" width="15"/> Très urgent
+      </td>
+      <td>
+        <img src="/assets/waiting.png" height="15" width="15"/> En attente
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

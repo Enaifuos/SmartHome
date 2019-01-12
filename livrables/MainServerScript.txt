@@ -1,0 +1,7 @@
+create database MainServer;
+\c MainServer;
+drop table if exists correspondanceID_BDD;
+create table correspondanceID_BDD (
+id varchar(10) primary key,
+mdp varchar(50) not null,
+bdd varchar(20) not null);

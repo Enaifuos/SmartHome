@@ -1,0 +1,47 @@
+h3{font-size:20px;line-height:40px;text-align: center;font-weight:bold;color:#456;font-family:"Century Gothic", Times, serif;}
+
+.date{margin-left: 60% ;height:350px;margin-top:5px;font: bold 10px/1 "Century Gothic", Times, serif;color:#456;}
+.titre{font-weight:bold;font-size:30px;color:#456;font-family:"Century Gothic", Times, serif;}
+.detail-wrap{background: #D3D3D3;height:450px;margin-top:10px;border: 2px ridge black;width:90%;margin-left: auto;margin-right: auto; border-radius:15px;}
+.attribuer{color:#456;font-family:"Century Gothic", Times, serif;}
+section.content1,section.content2{max-height:600px;}
+/************Les d�tails de l'incidents********/
+p.type,p.urgence,p.duree,p.localisation,p.idauteur,p.description{margin-top:2.5px;color:#0B0B3B;}
+.change{margin-top:20px;}
+.comments, .fields, .fields2{font-family:"Century Gothic", Times, serif;font-size:20px;color:#456;text-align:left;}
+
+.fields{width:30%;background:#D3D3D3;margin-left:40px;margin-top:25px;}
+.fields2{width:60%;background:#D3D3D3;margin-left:200px;margin-top:-145px;}
+
+/**********************************************/
+section {display: none;padding: 20px 0 0;border-top: 1px solid #ddd;}
+input {display: none;margin-bottom:20px;}
+label {
+  display: inline-block;
+  margin: 0 0 -1px;
+  padding: 15px 25px;
+  font-weight: 600;
+  text-align: center;
+  color: #bbb;
+  border: 1px solid transparent;
+}
+label:before {
+  font-family: fontawesome, serif;
+  font-weight: normal;
+  margin-right: 10px;
+}
+label:hover {
+  color: #888;
+  cursor: pointer;
+}
+input:checked + label {
+  color: #555;
+  border: 1px solid #ddd;
+  border-top: 2px solid orange;
+  border-bottom: 1px solid #fff;
+}
+#tab1:checked ~ #content1,
+#tab2:checked ~ #content2{
+  display: block;
+}
+

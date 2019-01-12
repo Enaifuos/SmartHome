@@ -1,0 +1,8 @@
+<textarea [ngClass]="{warningArea: warning}" placeholder="Saisir votre commentaire..." name="comments" id="comments" cols="40" rows="4" ng-model="commentaire" (keyup)="onKey($event)">
+</textarea>
+<!-- Cetait dans la textarea dans le placeholder ne saffiche pas {{commentaire}}-->
+<p class="counter"> Nombre de caractère restant : {{charRemaining}}</p>
+<p *ngIf="warning" class="warning"> Vous avez dépassé la limite de caractère autorisée ! </p>
+<div>
+<button *ngIf="enable" data-hover="valider vos commentaires" class="button" (click)="getCommentaire()"><div>Valider</div></button>
+</div>

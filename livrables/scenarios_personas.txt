@@ -1,0 +1,18 @@
+Personas:
+
+Une famille avec:
+Un père de 40 ans, ingénieur en informatique, aime contrôler et automatiser sa maison
+Une mère de 40 ans, prof d'histoire dans un lycée
+Un fils de 6 ans, très curieux
+Une fille de 22 ans, habite dans un studio pendant la semaine pour être proche de son école mais revient chez ses parents le week-end
+
+Scénarios:
+
+1)
+Durant la semaine, la fille décide d'organiser une fête avec ses parents le week-end, elle voudrait donc demander à ses parents d'acheter des boissons et de la nourriture. Elle décide d'inscrire un message sur le frigo de ses parents pour qu'ils sachent quoi acheter.
+
+2)
+Le père souhaiterait diminuer la facture d'électricité, il voudrait donc éteindre les lumières et le chauffage automatiquement lorsque personne n'est dans la maison. Les capteurs à l'entrée pourraient permettre de détecter que quelqu'un est entré ou sorti
+
+3)
+La mère voudrait un réveil plus naturel, elle voudrait être réveillée par la lumière du soleil en ouvrant les volets automatiquement à 8h.

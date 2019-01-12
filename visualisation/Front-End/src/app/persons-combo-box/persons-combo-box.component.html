@@ -1,0 +1,10 @@
+<div *ngIf="dataAvailable">
+  <select>
+    <option (click)="deleteAttribution()" selected>Personne</option>
+    <option *ngFor="let person of persons | filter:search | orderBy: {property: column, direction: direction}"
+            (click)="onSelect(person)" [selected]="selectedPerson && selectedPerson.idpersonne === person.idpersonne"
+            [ngStyle]="isOptimal(person)">
+      {{person.prenom}} {{person.nom}}
+    </option>
+  </select>
+</div>

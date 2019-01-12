@@ -1,0 +1,7 @@
+.DS_Store
+/visualisation/Front-End/node_modules
+/visualisation/Front-End/.idea
+/visualisation/Back-End/node_modules
+/visualisation/Back-End/.idea
+.idea
+.iml
